@@ -3,9 +3,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm
-from django.contrib.auth.decorators import login_required
 
-@login_required
 def task_list(request):
     tasks = Task.objects.filter(user=request.user)
 
@@ -24,13 +22,11 @@ def task_list(request):
         'form': form
     })
 
-@login_required
 def delete_task(request, pk):
     task = get_object_or_404(Task, pk=pk, user=request.user)
     task.delete()
     return redirect('task_list')
 
-@login_required
 def toggle_task(request, pk):
     task = get_object_or_404(Task, pk=pk, user=request.user)
     task.completed = not task.completed
