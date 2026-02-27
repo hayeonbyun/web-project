@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# DB
+db.sqlite3
+
+# Django secret key / env
+.env
+
+# VSCode settings
+.vscode/
+
+# Mac OS / Windows
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
