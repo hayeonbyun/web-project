@@ -122,3 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+import os
+
+if os.environ.get("RENDER"):
+    from django.contrib.auth.models import User
+    if not User.objects.filter(username="demo").exists():
+        User.objects.create_user(
+            username="demo",
+            password="demo1234"
+        )
