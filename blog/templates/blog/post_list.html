@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Blog Posts</h2>
+
+<a href="{% url 'post_create' %}" class="btn btn-primary">New Post</a>
+
+<hr>
+
+{% for post in posts %}
+    <div>
+        <h4>
+            <a href="{% url 'post_detail' post.pk %}">
+                {{ post.title }}
+            </a>
+        </h4>
+        <p>By {{ post.author }} | {{ post.created_at }}</p>
+    </div>
+    <hr>
+{% endfor %}
+
+{% endblock %}
